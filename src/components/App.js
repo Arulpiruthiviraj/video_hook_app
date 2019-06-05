@@ -10,9 +10,9 @@ function App() {
   const [searchResults, setSearchResults] = useState('');
   const [selectedVideo, setSelectedVideo] = useState(null);
 
-  useEffect(() => {
-    onSearchSubmit('victoria')
-  });
+  useEffect(( ) => {
+    onSearchSubmit('victoria premiere')
+  },[]);
 
 
   const onSearchSubmit=async term=>{
