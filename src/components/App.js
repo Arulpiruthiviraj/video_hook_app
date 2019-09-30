@@ -11,7 +11,7 @@ function App() {
   const [selectedVideo, setSelectedVideo] = useState(null);
 
   useEffect(( ) => {
-    onSearchSubmit('victoria premiere')
+    onSearchSubmit('Mindfullness')
   },[]);
 
 
