@@ -1,6 +1,7 @@
 import React from 'react';
 import VideoItem from "./VideoItem";
 
+
 const VideoList =({videos,onVideoSelect})=> {
    const renderedResults=videos.length > 0 ?(
        videos.map(video=>{

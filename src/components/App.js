@@ -1,11 +1,13 @@
 import React, {useState,useEffect} from 'react';
+import {Container,Grid,Responsive} from 'semantic-ui-react';
 import SearchBar from "./SearchBar";
 import {YoutubeKey} from "../apis/Youtube";
 import Youtube from "../apis/Youtube";
 import VideoList from "./VideoList";
 import VideoDetail from "./VideoDetail";
 
-function App() {
+
+const  App=()=>{
 
   const [searchResults, setSearchResults] = useState('');
   const [selectedVideo, setSelectedVideo] = useState(null);
@@ -27,23 +29,30 @@ function App() {
     setSearchResults(response.data.items);
     setSelectedVideo(response.data.items[0])
   };
+
+
   const onVideoSelect=video=>{
     setSelectedVideo(video)
   };
+
+
+
   return (
-    <div className={"ui container"}>
+    <Responsive minWidth={768}>
+        <Container>
       <SearchBar formSubmit={onSearchSubmit}/>
-      <div className={"ui grid"}>
-        <div className={"ui row"}>
-          <div className={"eleven wide column"}>
+      <Grid>
+        <Grid.Row>
+          <Grid.Column width={11}>
             <VideoDetail video={selectedVideo}/>
-          </div>
-          <div className={"five wide column"}>
+          </Grid.Column>
+          <Grid.Column width={5}>
             <VideoList onVideoSelect={onVideoSelect} videos={searchResults}/>
-          </div>
-        </div>
-      </div>
-    </div>
+          </Grid.Column>
+        </Grid.Row>
+      </Grid>
+    </Container>
+    </Responsive>
   );
 }
 

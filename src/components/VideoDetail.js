@@ -1,4 +1,5 @@
 import React from 'react';
+import {Container,Embed ,Header, Segment ,Placeholder} from 'semantic-ui-react';
 
 const VideoDetail=({video})=> {
     if (!video){
@@ -8,20 +9,26 @@ const VideoDetail=({video})=> {
           </div>
       )
     };
-    const videoSrc=`https://www.youtube.com/embed/${video.id.videoId}`;
     return (
-
-        <div>
-            <div className={"ui embed"}>
-                <iframe src={videoSrc} title={"Video Player"}/>
-            </div>
-            <div className={"ui segment"}>
-                <h4 className={"ui header"}>
-                    {video.snippet.title}
-                </h4>
-                <p> {video.snippet.description}</p>
-            </div>
-        </div>
+        <Container>
+             <Embed
+            id={video.id.videoId}
+            title={video.snippet.title}
+            source={'youtube'}
+            aspectRatio='16:4'
+            autoplay={false}
+            iframe={{
+            allowFullScreen: true,
+          }}
+          color='black'
+          />
+         <Segment>
+            <Header>
+            {video.snippet.title}
+            </Header>
+            <p>{video.snippet.description}</p>
+            </Segment>
+        </Container>
     );
 };
 
